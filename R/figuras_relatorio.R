@@ -123,20 +123,6 @@ source('R/logis_shrink.R')
   e <- matrix(rnorm(M*I, sd=7/4), nrow=M)
   A <- alpha %*% y + e
     
-# Figura 7: bumps e doppler
-  ## Figura 7 (a): Bumps
-  # pdf('figuras/bumps.pdf', height=3.8, width=6.75)
-  # par(mar=c(4.1, 4.1, 1.5, 1), cex=1.15, las=1)
-  # plot(x, alpha[,1], type='l', ylab='y')
-  # dev.off()
-  
-  ## Figura 7 (b): Doppler
-  # pdf('figuras/doppler.pdf', height=3.8, width=6.75)
-  # par(mar=c(4.1, 4.1, 1.5, 1), cex=1.15, las=1)
-  # plot(x, alpha[,2], type='l', ylab='y')
-  # dev.off()
-
-
 # Figura 7: Amostra agregada
   pdf('figuras/ExemploAmostraFuncional.pdf', height=3, width=6.75)
   par(mar=c(4.1, 4.1, 1.5, 1), cex=1, las=1)
@@ -218,7 +204,7 @@ source('R/logis_shrink.R')
   pesos <- t(tecator$y)
 
 ## Figura 10: Amostra de curvas agregadas do Tecator
-  pdf('figuras/AplicacaoTecatorAmostra.pdf', height=3.1, width=6.75)
+  pdf('figuras/AplicacaoTecatorAmostra.pdf', height=3, width=6.75)
   par(mar=c(4.5, 4.7, 1, 1))
   plot(fun_tec, ylab='Absorbância', xlab='Comprimento de onda (nm)', main='')
   dev.off()
@@ -241,23 +227,58 @@ source('R/logis_shrink.R')
   
 ## Figura 11: Funções constituintes
   # Figura 11 (a): componente de gordura
-  pdf('figuras/AplicacaoGorduraEst.pdf', height=4.7, width=6.5)
+  pdf('figuras/AplicacaoGorduraEst.pdf', height=4.4, width=6.5)
   par(mar=c(5.3, 6.2, 1, 1), mgp=c(4,.75,0), cex.lab=1.9, cex.axis=1.3, las=1)
   plot(x, alpha_hat_bayes[,1], type='l', lwd=2,
        ylab=expression(hat(alpha)[1](t)), xlab='Comprimento de onda (nm)')
   dev.off()
   
   # Figura 11 (b): componente de água
-  pdf('figuras/AplicacaoAguaEst.pdf', height=4.7, width=6.5)
+  pdf('figuras/AplicacaoAguaEst.pdf', height=4.4, width=6.5)
   par(mar=c(5.3, 6.2, 1, 1), mgp=c(4,.75,0), cex.lab=1.9, cex.axis=1.3, las=1)
   plot(x, alpha_hat_bayes[,2], type='l', lwd=2,
        ylab=expression(hat(alpha)[2](t)), xlab='Comprimento de onda (nm)')
   dev.off()
   
   # Figura 11 (c): componente de proteína
-  pdf('figuras/AplicacaoProteinaEst.pdf', height=4.7, width=6.5)
+  pdf('figuras/AplicacaoProteinaEst.pdf', height=4.4, width=6.5)
   par(mar=c(5.3, 6.2, 1, 1), mgp=c(4,.75,0), cex.lab=1.9, cex.axis=1.3, las=1)
   plot(x, alpha_hat_bayes[,3], type='l', lwd=2,
        ylab=expression(hat(alpha)[3](t)), xlab='Comprimento de onda (nm)')
+  dev.off()
+}
+
+# Figura 14: Funções de teste (apêndice)
+{
+  x <- (1:1024)/1024
+  
+  ## Figura 14 (a): Bumps
+  pdf('figuras/bumps.pdf', height=3.5, width=6.75)
+  par(mar=c(4.1, 4.1, 1.5, 1), cex=1.15, las=1)
+  plot(x, f_test()$bumps, type='l', ylab='y')
+  dev.off()
+  
+  ## Figura 14 (b): Doppler
+  pdf('figuras/doppler.pdf', height=3.5, width=6.75)
+  par(mar=c(4.1, 4.1, 1.5, 1), cex=1.15, las=1)
+  plot(x, f_test()$doppler, type='l', ylab='y')
+  dev.off()
+  
+  ## Figura 14 (c): heavisine
+  pdf('figuras/heavisine.pdf', height=3.5, width=6.75)
+  par(mar=c(4.1, 4.1, 1.5, 1), cex=1.15, las=1)
+  plot(x, f_test()$heavisine, type='l', ylab='y')
+  dev.off()
+  
+  ## Figura 14 (d): blcoks
+  pdf('figuras/blocks.pdf', height=3.5, width=6.75)
+  par(mar=c(4.1, 4.1, 1.5, 1), cex=1.15, las=1)
+  plot(x, f_test()$blocks, type='s', ylab='y')
+  dev.off()
+  
+  ## Figura 14 (e): logit
+  pdf('figuras/logit.pdf', height=3.5, width=6.75)
+  par(mar=c(4.1, 4.1, 1.5, 1), cex=1.15, las=1)
+  plot(x, f_test()$logit, type='s', ylab='y')
   dev.off()
 }

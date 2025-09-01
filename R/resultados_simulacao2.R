@@ -41,7 +41,7 @@ result <- rbind(L2, L4) |>
 
 # Figura 13: Boxplot do AMSE para SNR = 3 e 7 considerando M e L.
 {
-  pdf('figuras/simu2snr3boxplot.pdf', height=4.3, width=6.75)
+  pdf('figuras/simu2snr3boxplot.pdf', height=4.1, width=6.75)
   par(mar=c(4.1, 4.1, 1.5, 1), cex=1.2, las=1)
   result |> filter(snr==3) |>
     boxplot(AMSE ~ M + L, data=_,col=rep(c('blue', 'red'), each=2),
@@ -50,7 +50,7 @@ result <- rbind(L2, L4) |>
            legend=c(expression(L == 2), expression(L == 4)))
   dev.off()
   
-  pdf('figuras/simu2snr7boxplot.pdf', height=4.3, width=6.75)
+  pdf('figuras/simu2snr7boxplot.pdf', height=4.1, width=6.75)
   par(mar=c(4.1, 4.1, 1.5, 1), cex=1.2, las=1)
   result |> filter(snr==7) |>
     boxplot(AMSE ~ M + L, data=_,col=rep(c('blue', 'red'), each=2),
