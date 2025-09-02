@@ -58,9 +58,9 @@ result <- rbind(L2, L4, L5) |>
 
 # Gráficos do relatório FAPESP --------------------------------------------
 
-# Figura 12: AMSE para SNR, L e M
+# Figura 11: AMSE para SNR, L e M
 {
-  pdf('figuras/AMSEParam.pdf', height=2.4, width=6)
+  pdf('figuras/AMSEParam.pdf', height=2, width=6)
   par(mfrow=c(1,3), mar=c(4.1, 4.1, 1.5, 1), cex=.7, las=1)
   boxplot(AMSE ~ snr, data=result, xlab='SNR')
   boxplot(AMSE ~ L, data=result)
